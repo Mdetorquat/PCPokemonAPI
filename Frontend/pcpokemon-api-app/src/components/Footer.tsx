@@ -1,5 +1,6 @@
 import React from 'react'
 import logo_pokemon from '../assets/images/pokemon-logo.png'
+import { NavLink } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -11,9 +12,9 @@ function Footer() {
 
         <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
         <li>
-            <a className="text-gray-700 transition hover:text-gray-700/75" href="/">
-            About
-            </a>
+            <NavLink className="text-gray-700 transition hover:text-gray-700/75" to="/about">
+              About
+            </NavLink>
         </li>
         </ul>
     </div>
