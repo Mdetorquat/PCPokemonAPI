@@ -1,4 +1,3 @@
-import React from 'react'
 import logo_pokemon from '../assets/images/pokemon-logo.png'
 import { NavLink } from 'react-router-dom'
 
