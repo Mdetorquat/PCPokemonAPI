@@ -4,7 +4,13 @@ import RegisterForm from './pages/RegisterForm'
 import LoginForm from './pages/LoginForm'
 import About from './pages/About'
 import Boxes from './pages/Boxes'
+import CreateNewBoxe from './pages/CreateNewBoxe'
 import { TrainerContextProvider } from './contexts/TrainerContext'
+import DetailedBoxe from './pages/DetailedBoxe'
+import CreateNewPokemon from './pages/CreateNewPokemon'
+import ProtectedRoute from './commons/ProtectedRoute'
+import { SearchPokemons } from './pages/SearchPokemon'
+import { DetailedPokemon } from './pages/DetailedPokemon'
 
 const router = createBrowserRouter([
   {
@@ -24,12 +30,38 @@ const router = createBrowserRouter([
               element:<About />
           },
           {
-              path: "/my-boxes",
-              element:<Boxes />
-          }
-      ]
-  }
-])
+            path: "/",
+            element: <ProtectedRoute />,
+            children: [
+              {
+                path: "/my-boxes",
+                element:<Boxes />
+              },
+              {
+                path:"/new-box",
+                element: <CreateNewBoxe />
+              },
+              {
+                path:"boxes/:boxeId",
+                element: <DetailedBoxe />
+              },
+              {
+                path: "/boxes/:trainerId/new-pokemon",
+                element: <CreateNewPokemon />
+              },
+              {
+                path: "search-pokemons",
+                element: <SearchPokemons />
+              },
+              {
+                path: "pokemons/:pokemonId",
+                element: <DetailedPokemon />
+              }
+            ],
+          },
+      ],
+  },
+]);
 
 const App = () => {
 

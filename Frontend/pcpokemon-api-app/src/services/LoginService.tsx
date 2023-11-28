@@ -1,9 +1,4 @@
-interface LoginState {
-    accessToken?: string,
-    trainerId?: number,
-    message?: string,
-    codeStatus?: number
-};
+import { LoginState } from "../interfaces/Interfaces";
 
 export const LoginService =async (
     login: string,

@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { TrainerType } from "../entity/Trainer";
 
-const defaultTrainerData: TrainerType = {
+export const defaultTrainerData: TrainerType = {
     accessToken: "",
     trainerId: 0
 }

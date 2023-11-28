@@ -1,9 +1,4 @@
-interface SubscribeState {
-    accessToken?: string,
-    trainerId?: number,
-    message?: string,
-    codeStatus?: number
-}
+import { SubscribeState } from "../interfaces/Interfaces";
 
 export const SubscribeService = async (
     firstName:string,
