@@ -9,7 +9,6 @@ import { TrainerContextProvider } from './contexts/TrainerContext'
 import DetailedBoxe from './pages/DetailedBoxe'
 import CreateNewPokemon from './pages/CreateNewPokemon'
 import ProtectedRoute from './commons/ProtectedRoute'
-import { SearchPokemons } from './pages/SearchPokemon'
 import { DetailedPokemon } from './pages/DetailedPokemon'
 
 const router = createBrowserRouter([
@@ -48,10 +47,6 @@ const router = createBrowserRouter([
               {
                 path: "/boxes/:trainerId/new-pokemon",
                 element: <CreateNewPokemon />
-              },
-              {
-                path: "search-pokemons",
-                element: <SearchPokemons />
               },
               {
                 path: "pokemons/:pokemonId",

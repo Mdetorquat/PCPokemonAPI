@@ -10,7 +10,8 @@ export const getPokemons = async (
     const options = {
         method: "GET",
         headers: {
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${trainerData.accessToken}`,
         },
     };
 
@@ -28,7 +29,7 @@ export const getPokemons = async (
 export const getPokemonById = async (
     trainerData: TrainerType,
     pokemonId: string | undefined
-) : Promise<PokemonState> => {
+) => {
     const url = `http://localhost:8000/pokemons/${pokemonId}`;
     const options = {
         method: "GET",
@@ -67,10 +68,33 @@ export const createPokemons = async (
     try {
         const result = await fetch(url, options);
         const data = await result.json();
-        console.log(data);
         return { codeStatus: 201, id: data.id };
     } catch (error) {
         console.error("Your request doesn't have the fields expected");
         return  { codeStatus: 400 }
+    }
+}
+
+export const deletePokemon = async (
+    trainerData: TrainerType,
+    pokemonId: string | undefined
+) : Promise<PokemonState>  => {
+    const url = `http://localhost:8000/pokemons/${pokemonId}`;
+    const options = {
+        method: "DELETE",
+        headers: {
+            'Content-Type' : "application/json",
+            "Authorization" : `Bearer ${trainerData.accessToken}`
+        }
+    };
+
+    try {
+        const result = await fetch(url, options);
+        const data = await result.json();
+        console.error("The data of the pokemon have been entirely removed");
+        return { codeStatus: 200, pokemon: data }
+    } catch (error) {
+        console.error("You are forbidden to perform this action");
+        return { codeStatus: 403, pokemon: {id: 0, species: "", name: "", level: 1, genderTypeCode: "", size: 0, weight: 0, isShiny: false}  };
     }
 }

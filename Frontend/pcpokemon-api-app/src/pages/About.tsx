@@ -1,3 +1,5 @@
+import React from "react"
+
 export const About = () => {
     return (
         <div className="bg-gray-100">
@@ -5,10 +7,7 @@ export const About = () => {
                 <h2>A propos du développeur :</h2>
                 <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                     <li>
-                        Nom : de Torquat
-                    </li>
-                    <li>
-                        Prénom : Maxence
+                        Nom : Maxence de Torquat
                     </li>
                 </ul>
             </div>

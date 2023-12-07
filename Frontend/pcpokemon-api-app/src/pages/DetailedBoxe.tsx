@@ -3,6 +3,7 @@ import TrainerContext from "../contexts/TrainerContext";
 import { Pokemon } from "../entity/Pokemon";
 import { NavLink, useParams } from "react-router-dom";
 import { getBoxeById } from "../services/BoxeService";
+import React from "react";
 
 const DetailedBoxe = () => {
 
@@ -29,7 +30,7 @@ const DetailedBoxe = () => {
 
     return (
         <>
-        <div id="select-modal" className="overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="select-modal" className="inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden">
             <div className="relative p-4 w-full max-w-md max-h-full">
                 <div className="relative bg-white rounded-lg shadow dark:bg-blue-900">
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -49,8 +50,8 @@ const DetailedBoxe = () => {
 
         <ul role="list" className="divide-y divide-gray-100 grid grid-cols-3 gap-4 content-center">
         { pokemons.map((pokemon) => (
-            <div id="select-modal" className="overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <NavLink key={pokemon.id} to={`/pokemons/${pokemon.id}`}>
+            <div key={pokemon.id} id="select-modal" className="overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <NavLink to={`/pokemons/${pokemon.id}`}>
                 <div className="flex flex-col items-center pb-10">
                     <h5 className="mb-1 text-xl font-medium text-blue-900">
                     {pokemon.name}

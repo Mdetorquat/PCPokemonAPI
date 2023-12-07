@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import TrainerContext from "../contexts/TrainerContext";
 import { createBoxe } from "../services/BoxeService";
+import React from "react";
 
 const CreateNewBoxe = () => {
 

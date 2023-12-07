@@ -1,20 +1,27 @@
 import { useContext, useEffect, useState } from "react"
 import TrainerContext from "../contexts/TrainerContext";
-import { NavLink, useParams } from "react-router-dom";
-import { getPokemonById } from "../services/PokemonService";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { deletePokemon, getPokemonById } from "../services/PokemonService";
+import { RxUpdate } from "react-icons/rx";
+import { MdDelete } from "react-icons/md";
+
+
 
 export const DetailedPokemon = () => {
 
-    const [ pokemonName, setPokemonName] = useState("");
-    const [ pokemonSpecies, setPokemonSpecies ] = useState("");
-    const [ pokemonLevel, setPokemonLevel ] = useState(1);
-    const [ pokemonGender, setPokemonGender ] = useState("");
-    const [ pokemonShiny, setPokemonShiny ] = useState(false);
-    const [ pokemonWeight, setPokemonWeight ] = useState(0);
-    const [ pokemonSize, setPokemonSize ] = useState(0);
+    const [ name, setName] = useState("");
+    const [ species, setSpecies ] = useState("");
+    const [ level, setLevel ] = useState(1);
+    const [ gender, setGender ] = useState("");
+    const [ isShiny, setIsShiny ] = useState(false);
+    const [ weight, setWeight ] = useState(0);
+    const [ size, setSize ] = useState(0);
+
     const { trainerData } = useContext(TrainerContext);
 
     const options = useParams();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getPokemon = async () => {
@@ -29,57 +36,70 @@ export const DetailedPokemon = () => {
                 const pokemonWeight = data.pokemon.weight;
                 const pokemonSize = data.pokemon.size;
 
-                setPokemonName(pokemonName);
-                setPokemonGender(pokemonGender);
-                setPokemonLevel(pokemonLevel);
-                setPokemonSpecies(pokemonSpecies);
-                setPokemonShiny(pokemonShiny);
-                setPokemonWeight(pokemonWeight);
-                setPokemonSize(pokemonSize);
+                setName(pokemonName);
+                setGender(pokemonGender);
+                setLevel(pokemonLevel);
+                setSpecies(pokemonSpecies);
+                setIsShiny(pokemonShiny);
+                setWeight(pokemonWeight);
+                setSize(pokemonSize);
+
             }
         };
         getPokemon();
-    },[])
+    },[]);
 
-    const handleEditPokemon = () => {
+    async function handleDelete(e: { preventDefault: () => void}) {
+        e.preventDefault();
 
-    }
-
-    const handleDeletePokemon = () => {
-
+        const data = deletePokemon(trainerData, options.pokemonId)
+        console.log(data);
+        if ((await data).codeStatus === 200) {
+            navigate("boxes/:boxeId")
+        }
     }
 
     return (
-        <>
-
-        <ul role="list" className="flex items-center divide-y divide-gray-100 grid grid-cols-3 gap-4 content-center">
-            <div id="select-modal" className="overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div className="flex items-center justify-center h-screen mx-auto">
+                <div id="select-modal" className="overflow-y-auto overflow-x-hidden z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div className="flex flex-col items-center pb-10">
-                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                    {pokemonName}
+                    <h5 className="mb-1 text-xl font-medium text-blue-900">
+                    {name}
                     </h5>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Species: {pokemonSpecies}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Gender: {pokemonGender}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Level: {pokemonLevel}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Shiny: {pokemonShiny ? "yes" : "no"}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Size: {pokemonSize}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Weight: {pokemonWeight}
-                    </span>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Species: {species}</span>
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Gender: {gender}</span>
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Level: {level}</span>
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Shiny: {isShiny ? "yes" : "no"}</span>
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Size: {size}</span>
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <span>Weight: {weight}</span>
+                    </div>
+                    <div className="flex items-center mt-4">
+                    <NavLink to={"#"}>
+                        <button className="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" >
+                        <RxUpdate className="mr-2"/>Modifier le Pokémon
+                        </button>
+                    </NavLink>
+                    <NavLink to={`/my-boxes`}>
+                        <button type="submit" onClick={handleDelete} className="flex items-center focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        <MdDelete className="mr-2"/>Supprimer le Pokémon
+                        </button>
+                    </NavLink>
+                    </div>
                 </div>
-            </div>        
-        </ul>
-        </>
+                </div>
+
+            </div>
     )
 }
 

@@ -11,6 +11,7 @@ import { FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
 import { HiOutlineLogin } from "react-icons/hi";
+import React from 'react';
 
 
 
@@ -30,7 +31,7 @@ export const Navbar = () => {
       <div className='relative flex h-16 justify-between items-center'>
         <div className='flex flex-shrink-0 items-center'>
           <NavLink to={"/"}>
-            <img src={logo_pokemon} className='h-9 w-auto' alt='logo'/>
+            <img src={logo_pokemon} className='h-9 w-auto' alt='Logo'/>
           </NavLink>
         </div>
 
@@ -38,7 +39,7 @@ export const Navbar = () => {
           <div className='menu flex gap-8'>
             <li className='menuList flex items-center text-[#6f6f6f] hover:text-blueColor'>
               <BsFillInboxesFill style={{ marginRight: '8px' }}/>
-              <NavLink to="/my-boxes">Mes boîtes</NavLink>
+              <NavLink id='my-boxes' to="/my-boxes">Mes boîtes</NavLink>
             </li>
             <li className='menuList flex items-center text-[#6f6f6f] hover:text-blueColor'>
               <GiTrade style={{ marginRight: '8px' }}/>
