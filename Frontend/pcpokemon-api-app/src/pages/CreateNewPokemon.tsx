@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TrainerContext from "../contexts/TrainerContext";
 import { createPokemons } from "../services/PokemonService";
 
-const CreateNewPokemon = () => {
+export default function CreateNewPokemon() {
 
     const [name, setName] = useState("");
     const [species, setSpecies] = useState("");
@@ -141,5 +141,3 @@ const CreateNewPokemon = () => {
         </>
     )
 }
-
-export default CreateNewPokemon

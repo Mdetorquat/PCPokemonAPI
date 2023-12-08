@@ -9,7 +9,7 @@ import { TrainerContextProvider } from './contexts/TrainerContext'
 import DetailedBoxe from './pages/DetailedBoxe'
 import CreateNewPokemon from './pages/CreateNewPokemon'
 import ProtectedRoute from './commons/ProtectedRoute'
-import { DetailedPokemon } from './pages/DetailedPokemon'
+import DetailedPokemon from './pages/DetailedPokemon'
 
 const router = createBrowserRouter([
   {
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => {
+export default function App() {
 
   return (
     <TrainerContextProvider>
@@ -66,7 +66,4 @@ const App = () => {
     </TrainerContextProvider>
   )
 }
-
-export default App
-
 

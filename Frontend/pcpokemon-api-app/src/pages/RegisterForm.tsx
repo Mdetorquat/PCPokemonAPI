@@ -2,7 +2,7 @@ import { useState} from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { SubscribeService } from "../services/SubscribeService";
 
-const RegisterForm = () => {
+export default function RegisterForm() {
 
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastName] = useState("");
@@ -108,5 +108,3 @@ const RegisterForm = () => {
         </>
     )
 }
-
-export default RegisterForm

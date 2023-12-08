@@ -7,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 
 
 
-export const DetailedPokemon = () => {
+export default function DetailedPokemon() {
 
     const [ name, setName] = useState("");
     const [ species, setSpecies ] = useState("");
@@ -102,5 +102,3 @@ export const DetailedPokemon = () => {
             </div>
     )
 }
-
-export default DetailedPokemon

@@ -2,7 +2,7 @@ import { useContext } from "react"
 import TrainerContext from "../contexts/TrainerContext"
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = () => {
+export default function ProtectedRoute() {
 
     const { trainerData } = useContext(TrainerContext);
 
@@ -12,5 +12,3 @@ const ProtectedRoute = () => {
 
     return <Outlet />
 }
-
-export default ProtectedRoute

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from 'react-router-dom';
-import { Navbar } from '../src/components/Navbar';
+import Navbar from '../src/components/Navbar';
 import React from 'react';
 import { describe, it, expect} from '@jest/globals'
 

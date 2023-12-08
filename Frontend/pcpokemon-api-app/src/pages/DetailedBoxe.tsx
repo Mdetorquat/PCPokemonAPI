@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import TrainerContext from "../contexts/TrainerContext";
 import { Pokemon } from "../entity/Pokemon";
-import { NavLink, useParams } from "react-router-dom";
-import { getBoxeById } from "../services/BoxeService";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { deleteBoxe, getBoxeById } from "../services/BoxeService";
+import { MdDelete } from "react-icons/md";
 
-const DetailedBoxe = () => {
+export default function DetailedBoxe() {
 
     const [ pokemons, setPokemons] = useState<Pokemon[]>([]);
     const [ boxeName, setBoxeName ] = useState("");
     const { trainerData } = useContext(TrainerContext);
+    const navigate = useNavigate();
 
     const options = useParams();
 
@@ -25,7 +27,17 @@ const DetailedBoxe = () => {
             }
         };
         getBoxe();
-    },[])
+    },[]);
+
+    async function handleDelete(e: { preventDefault: () => void}) {
+        e.preventDefault();
+
+        const data = deleteBoxe(trainerData, options.pokemonId)
+        console.log(data);
+        if ((await data).codeStatus === 200) {
+            navigate("/my-boxes")
+        }
+    }
 
     return (
         <>
@@ -40,6 +52,11 @@ const DetailedBoxe = () => {
                         <NavLink to={`/boxes/${options.boxeId}/new-pokemon`}>
                             <button className="text-white inline-flex w-full justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Create a new Pokemon
+                            </button>
+                        </NavLink>
+                        <NavLink to={`/my-boxes`}>
+                            <button type="submit" onClick={handleDelete} className="text-white inline-flex w-full justify-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                <MdDelete className="mr-2"/>Supprimer la boîte
                             </button>
                         </NavLink>
                     </div>
@@ -81,5 +98,3 @@ const DetailedBoxe = () => {
         </>
     )
 }
-
-export default DetailedBoxe

@@ -76,3 +76,27 @@ export const getBoxeById = async (
         return { codeStatus: 400, boxe: {id: 0, name: ""}};
     }
 }
+
+export const deleteBoxe = async (
+    trainerData: TrainerType,
+    boxeId: string | undefined
+) : Promise<BoxeState>  => {
+    const url = `http://localhost:8000/trainers/${trainerData.trainerId}/boxes/${boxeId}`;
+    const options = {
+        method: "DELETE",
+        headers: {
+            'Content-Type' : "application/json",
+            "Authorization" : `Bearer ${trainerData.accessToken}`
+        }
+    };
+
+    try {
+        const result = await fetch(url, options);
+        const data = await result.json();
+        console.error("The data of the boxe have been entirely removed");
+        return { codeStatus: 200, boxe: data }
+    } catch (error) {
+        console.error("You are forbidden to perform this action");
+        return { codeStatus: 403, boxe: {id: 0, name: "" }  };
+    }
+}

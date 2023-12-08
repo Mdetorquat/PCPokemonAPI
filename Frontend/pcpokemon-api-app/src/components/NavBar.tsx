@@ -14,7 +14,7 @@ import { HiOutlineLogin } from "react-icons/hi";
 import React from 'react';
 
 
-export const Navbar = () => {
+export default function Navbar() {
 
   const isLoggedIn = Authentication();
 

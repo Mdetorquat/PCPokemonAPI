@@ -4,7 +4,7 @@ import { LoginService } from "../services/LoginService";
 import { TrainerType } from "../entity/Trainer";
 import TrainerContext from "../contexts/TrainerContext";
 
-const LoginForm = () => {
+export default function LoginForm() {
 
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -91,5 +91,3 @@ const LoginForm = () => {
     </>
     )
 }
-
-export default LoginForm

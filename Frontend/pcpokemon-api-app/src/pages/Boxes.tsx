@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { getBoxes } from "../services/BoxeService";
 import React from "react";
 
-const Boxes = () => {
+export default function Boxes() {
 
     const { trainerData } = useContext(TrainerContext);
     const [boxes, setBoxes] = useState<Boxe[]>([]);
@@ -63,5 +63,3 @@ const Boxes = () => {
         </>
     )
 }
-
-export default Boxes

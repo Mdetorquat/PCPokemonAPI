@@ -4,7 +4,7 @@ import TrainerContext from "../contexts/TrainerContext";
 import { createBoxe } from "../services/BoxeService";
 import React from "react";
 
-const CreateNewBoxe = () => {
+export default function CreateNewBoxe () {
 
     const navigate = useNavigate();
     const [newBoxe, setNewBoxe] = useState("");
@@ -40,5 +40,3 @@ const CreateNewBoxe = () => {
         </form>
     )
 }
-
-export default CreateNewBoxe

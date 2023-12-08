@@ -2,7 +2,7 @@ import logo_pokemon from '../assets/images/pokemon-logo.png'
 import { NavLink } from 'react-router-dom'
 import React from 'react'
 
-function Footer() {
+export default function Footer() {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-blue-900 m-4">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -23,5 +23,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer
