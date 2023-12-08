@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { LoginService } from "../services/LoginService";
 import { TrainerType } from "../entity/Trainer";
 import TrainerContext from "../contexts/TrainerContext";
-import React from "react";
 
 const LoginForm = () => {
 
@@ -24,7 +23,7 @@ const LoginForm = () => {
       }
     })
 
-    const handleLogin = async (e: any) => {
+    const handleLogin = async (e: {preventDefault: () => void}) => {
       e.preventDefault();
 
       const result = await LoginService(

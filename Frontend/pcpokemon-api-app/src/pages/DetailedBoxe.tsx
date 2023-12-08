@@ -3,7 +3,6 @@ import TrainerContext from "../contexts/TrainerContext";
 import { Pokemon } from "../entity/Pokemon";
 import { NavLink, useParams } from "react-router-dom";
 import { getBoxeById } from "../services/BoxeService";
-import React from "react";
 
 const DetailedBoxe = () => {
 

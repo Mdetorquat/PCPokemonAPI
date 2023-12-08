@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { act } from 'react-dom/test-utils';
 import { describe, it, expect } from '@jest/globals'
@@ -16,7 +16,7 @@ describe('CreateNewBoxe component', () => {
       </MemoryRouter>
     );
 
-    // Add your assertions based on the rendered content
+    // assertions based on the rendered content
     const createBoxeButton = screen.getByText('Create my boxe');
     expect(createBoxeButton).toBeInTheDocument();
 

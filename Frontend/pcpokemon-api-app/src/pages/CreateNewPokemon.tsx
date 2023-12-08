@@ -12,7 +12,6 @@ const CreateNewPokemon = () => {
     const [isShiny, setIsShiny] = useState("");
     const [size, setSize] = useState(0);
     const [weight, setWeight] = useState(0);
-    const [error, setError] = useState(false);
 
     const navigate = useNavigate();
     const { trainerData } = useContext(TrainerContext);
@@ -24,7 +23,7 @@ const CreateNewPokemon = () => {
         if (result.codeStatus == 201) {
             navigate("/");
         } else {
-            setError(true);
+            console.log("Error during creation of the pokemon");
         }
     }
 

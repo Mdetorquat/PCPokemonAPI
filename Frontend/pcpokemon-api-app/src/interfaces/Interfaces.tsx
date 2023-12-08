@@ -22,7 +22,7 @@ export interface LoginState {
     trainerId?: number;
     message?: string;
     codeStatus?: number;
-};
+}
 
 export interface SubscribeState {
     accessToken?: string;

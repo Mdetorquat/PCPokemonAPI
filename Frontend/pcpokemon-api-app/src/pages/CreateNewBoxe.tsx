@@ -8,7 +8,6 @@ const CreateNewBoxe = () => {
 
     const navigate = useNavigate();
     const [newBoxe, setNewBoxe] = useState("");
-    const [ error, setError ] = useState(false);
     const { trainerData } = useContext(TrainerContext);
 
     async function handleCreate(e: { preventDefault: () => void}) {
@@ -18,7 +17,7 @@ const CreateNewBoxe = () => {
         if (result.codeStatus == 201) {
             navigate("/");
         } else {
-            setError(true);
+            console.error("Error during creation of the boxe")
         }
 
     }

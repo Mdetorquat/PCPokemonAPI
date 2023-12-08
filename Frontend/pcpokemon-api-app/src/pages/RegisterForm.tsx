@@ -1,7 +1,6 @@
 import { useState} from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { SubscribeService } from "../services/SubscribeService";
-import React from "react";
 
 const RegisterForm = () => {
 
@@ -32,7 +31,7 @@ const RegisterForm = () => {
       setError(true);
     }
     
-  };
+  }
 
     return (
         <>
