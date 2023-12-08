@@ -55,7 +55,7 @@ export const Navbar = () => {
             </li>
             <li className='menuList flex items-center text-[#6f6f6f] hover:text-blueColor'>
               <FaUser style={{ marginRight: '8px' }}/>
-              <NavLink to="/user-profils">Profile utilisateur(trice)</NavLink>
+              <NavLink to="/user-profile">Profile utilisateur(trice)</NavLink>
             </li>
             <li className='menuList flex items-center text-[#6f6f6f] hover:text-blueColor'>
               <MdLogout style={{ marginRight: '8px' }}/>
